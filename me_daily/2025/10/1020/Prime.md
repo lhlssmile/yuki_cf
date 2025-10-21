@@ -1,4 +1,4 @@
-# [[GYM105129L] Prime](https://codeforces.com/gym/105129/problem/L)
+##### [[GYM105129L] Prime](https://codeforces.com/gym/105129/problem/L)
 
 **提示：** 如何找到与所有数组元素的最大公约数都至少为2的最小正整数？
 
