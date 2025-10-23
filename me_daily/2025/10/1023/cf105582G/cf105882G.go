@@ -41,7 +41,7 @@ func main() {
 		mt := readInts()
 		m, t := mt[0], mt[1]
 		res := m*b - a*t
-		v2[i] = int64(res) // 同上
+		v2[i] = int64(res)
 	}
 	mp := make(map[int64]int)
 	for mask := 0; mask < (1 << k1); mask++ {
