@@ -48,9 +48,35 @@ fn main() {
         let n:usize = read!(it => usize);
         let mut a: Vec<i64> = read!(it => vec_i64, n);
         let mut freq:HashMap<i64, usize> = HashMap::new();
-        for &x in &a {freq[x as i64] += 1}
-        let mut base: i64 = 0i64;
-        let mut extras: Vec<i64> = Vec::new();
-        for () 
+        for &x in &a {
+            *freq.entry(x).or_insert(0) += 1;
+        }
+        let mut base: i64 = 0;
+        let mut extras: Vec<usize> = Vec::new();
+        
+        for (&h, &f) in &freq {
+            base += (h / 2) * f as i64;
+            if h % 2 == 1 {
+                extras.push(f);
+            }
+        }
+        
+        extras.sort_by(|a, b| b.cmp(a)); // 降序排列
+        
+        let mut alice_extra: i64 = 0;
+        let mut bob_extra: i64 = 0;
+        
+        for (i, &extra) in extras.iter().enumerate() {
+            if i % 2 == 0 {
+                alice_extra += extra as i64;
+            } else {
+                bob_extra += extra as i64;
+            }
+        }
+        
+        let alice = base + alice_extra;
+        let bob = base + bob_extra;
+        
+        println!("{} {}", alice, bob);
     }
 }
