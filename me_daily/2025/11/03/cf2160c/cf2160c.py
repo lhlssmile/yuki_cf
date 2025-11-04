@@ -7,8 +7,9 @@ II = lambda: int(input())
 LII = lambda: list(map(int, input().split()))
 SI = lambda: input()
 LSI = lambda: input().split()
-
-
+#            ori ex 0011    rev ex 1100
+# x ^ fx = n x=b1b2b3b4..by fx = byby-1by-2....b3b2b1
+# 
 t = II()
 for _ in range(t):
     n = f"{II():b}"
