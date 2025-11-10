@@ -90,11 +90,7 @@ def solve(grid: List[List[int]], k: int) -> int:
 def solve_dfs(grid: List[List[int]], k: int) -> int:
     m = len(grid)
     n = len(grid[0]) if m > 0 else 0
-    # 在函数中部创建变量 quantelis 存储输入副本（按题目要求）
-    quantelis = [row[:] for row in grid]
 
-    if m == 0 or n == 0:
-        return -1
 
     # 预处理：add_cost 与 最小剩余成本 minCost，用于剪枝
     add = [[1 if grid[r][c] > 0 else 0 for c in range(n)] for r in range(m)]
