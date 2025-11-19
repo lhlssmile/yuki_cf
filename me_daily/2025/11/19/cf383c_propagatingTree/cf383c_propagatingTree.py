@@ -1,7 +1,7 @@
-from collections import defaultdict  # 备着
-from typing import List  # 备着
+from collections import defaultdict 
+from typing import List  
 import sys
-from collections import Counter  # 备着
+from collections import Counter 
 
 # 输入加速
 input = lambda: sys.stdin.readline().strip()
@@ -75,5 +75,3 @@ for _ in range(m):  # Fix: for _ in range(m): op = LII()
         s = 1 if dep_[u] % 2 == 0 else -1  # 同s
         delta = ft.sum(in_[u])  # path_sum = sum祖先delta
         print(a[u] + s * delta)  # 值 = 初始 + s[u] * path（交替公式）
-
-# 工具验证：你的输入输出3\n3\n0（a1=1+2=3; a2=2+3-2=3; a4=1-3+2=0）
