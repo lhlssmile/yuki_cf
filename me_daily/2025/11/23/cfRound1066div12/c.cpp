@@ -30,31 +30,58 @@ int fastio_init = [](){
     cout.tie(nullptr);
     return 0;
 }();
-int main() {
+// int main() {
+//     int t;cin>>t;while(t--) {
+//         int n, k, q; cin >> n >> k >> q;
+//         V<pii> c1, c2;
+//         For(i, q) {
+//             int op,l,r;cin>>op>>l>>r;
+//             if(op==1) c1.pb({l,r}); else c2.pb({l,r});
+//         }
+//         vi inC1(n+1), inC2(n+1);
+//         EACH(x, c1) FOR(i, x.fi, x.se+1) inC1[i]=1;
+//         EACH(x, c2) FOR(i, x.fi, x.se+1) inC2[i]=1;
+//         vi a(n+1, k+1);
+//         vi P;
+//         FOR(i,1,n+1) if(!inC1[i]) P.pb(i);
+//         For(idx, (int)P.size()) a[P[idx]] = idx % k;
+//         EACH(seg, c1) {
+//             int l = seg.fi, r = seg.se;
+//             int pos = -1;
+//             FOR(i,l,r+1) if(!inC2[i]) { pos = i; break; }
+//             if(pos!=-1) a[pos] = k;
+//         }
+//         FOR(i,1,n+1) {
+//             if(i>1) cout<<" ";
+//             cout<<a[i];
+//         }
+//         cout<<"\n";
+//     }
+// }
+signed main() {
     int t;cin>>t;while(t--) {
-        int n, k, q; cin >> n >> k >> q;
-        V<pii> c1, c2;
+        int n,k,q;cin>>n>>k>>q;
+        V<pii> c1, c2;vi a(n + 1, k + 1),inC1(n + 1,0),inC2(n+1,0);
         For(i, q) {
-            int op,l,r;cin>>op>>l>>r;
-            if(op==1) c1.pb({l,r}); else c2.pb({l,r});
+            int op,l,r;cin>>op>>l>>r;if(op == 1) {
+                c1.pb({l, r});
+            }else {
+                c2.pb({l,r});
+            }
         }
-        vi inC1(n+1), inC2(n+1);
+        //op1:(l,r)出现k,op2:(l,r)不允许出现k但要有0~k-1
         EACH(x, c1) FOR(i, x.fi, x.se+1) inC1[i]=1;
         EACH(x, c2) FOR(i, x.fi, x.se+1) inC2[i]=1;
-        vi a(n+1, k+1);
-        vi P;
-        FOR(i,1,n+1) if(!inC1[i]) P.pb(i);
-        For(idx, (int)P.size()) a[P[idx]] = idx % k;
+        vi p;
+        FOR(i, 1, n + 1) if (!inC1[i]) p.pb(i);
+        For(i, p.size()) a[p[i]] = i % k;
         EACH(seg, c1) {
             int l = seg.fi, r = seg.se;
             int pos = -1;
-            FOR(i,l,r+1) if(!inC2[i]) { pos = i; break; }
-            if(pos!=-1) a[pos] = k;
+            FOR(i,l,r+1) if (!inC2[i]) {pos=i;break;}
+            a[pos] = k;
         }
-        FOR(i,1,n+1) {
-            if(i>1) cout<<" ";
-            cout<<a[i];
-        }
-        cout<<"\n";
+
+        FOR(i, 1,n+1) cout<<a[i]<<" ";cout<<"\n";
     }
 }
