@@ -30,7 +30,7 @@ int fastio_init = [](){
     cout.tie(nullptr);
     return 0;
 }();
-
+//https://codeforces.com/contest/2158/problem/B
 int main() {
     int t; cin >> t; while(t--) {  // 加了cin>>t; 就是它！
         int n; cin >> n; vi a(2 * n); For(i, 2 * n) cin >> a[i];
