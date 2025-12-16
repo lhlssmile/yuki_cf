@@ -74,6 +74,10 @@ func printSlice[T any](arr []T) {
 func main() {
 	defer writer.Flush() //main() 结束时自动调用
 	n, _ := strconv.Atoi(readLine())
+	if n < 3 {
+		fmt.Fprintln(writer, 0)
+		return
+	}
 	a := readInts()
 	ans, cur := 0, 0
 	for i := 2; i < n; i++ {
