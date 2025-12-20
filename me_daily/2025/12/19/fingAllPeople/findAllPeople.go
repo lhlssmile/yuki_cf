@@ -137,7 +137,7 @@ func main() {
 				visited[person] = struct{}{}
 			}
 		}
-
+		
 		// BFS遍历
 		for front < len(queue) {
 			u := queue[front]
